@@ -1,0 +1,22 @@
+{
+  "experiment": "perturbation_sweep",
+  "config": {
+    "L": 512,
+    "d_model": 64,
+    "num_layers": 2,
+    "batch_size": 4,
+    "num_epochs": 2
+  },
+  "results": {
+    "0.0": {
+      "retrieval_accuracy": 0.005,
+      "path_mass": 0.9989278966188431,
+      "final_loss": 0.9811601705551147
+    },
+    "0.001": {
+      "retrieval_accuracy": 0.005,
+      "path_mass": 0.9990000611543656,
+      "final_loss": 0.9814857242107391
+    }
+  }
+}

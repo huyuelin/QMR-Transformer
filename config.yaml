@@ -1,0 +1,62 @@
+# SuccinctBound Experiment Configuration
+# Reproduces experiments from aaai2026.tex
+
+experiment:
+  seed: 42
+  device: "cuda"  # or "cpu"
+  num_workers: 4
+  
+  # Training hyperparameters
+  batch_size: 128
+  learning_rate: 1e-3
+  num_epochs: 50
+  warmup_steps: 1000
+  
+  # Architecture variants to evaluate
+  architectures:
+    - "vanilla"      # Standard absolute position encoding
+    - "sparse"       # Top-k sparse attention
+    - "relative"     # T5-style relative position bias
+    - "nope"         # No position encoding
+    - "ssm"          # State-space mixture (Mamba-style)
+    - "rnn"          # Minimal recurrent augmentation
+  
+  # Benchmark tasks
+  benchmarks:
+    arithmetic:
+      train_length: 10      # digits
+      test_lengths: [20, 30, 40, 50]
+      vocab_size: 12         # digits 0-9 + operators + pad
+    dyck:
+      train_depth: 6
+      test_depths: [10, 14, 18, 24]
+      num_types: 3           # number of bracket types
+    counting:
+      train_length: 20       # tokens
+      test_lengths: [40, 60, 80, 100]
+      vocab_size: 100
+
+  # Sparse attention config
+  sparse:
+    k: 64  # top-k for sparse attention
+    
+  # SSM config (Mamba-style)
+  ssm:
+    d_state: 16
+    d_conv: 4
+    expand: 2
+    
+  # RNN config
+  rnn:
+    hidden_size: 256
+    rnn_type: "gru"  # or "lstm"
+
+  # Lean formalization
+  lean:
+    version: "4.14.0"
+    mathlib_rev: "HEAD"
+    seed_prover_api: null  # Set to API endpoint if available
+    
+  # Results
+  results_dir: "./results"
+  tables_dir: "./results/tables"

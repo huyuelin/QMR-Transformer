@@ -1,0 +1,26 @@
+{
+  "experiment": "compiler_stress_test",
+  "config": {
+    "L_train": 512,
+    "L_test": 1024,
+    "d_model": 128,
+    "num_layers": 4,
+    "batch_size": 4,
+    "num_epochs": 3,
+    "seed": 42
+  },
+  "results": {
+    "binary_mlp": {
+      "train_accuracy": 0.002,
+      "train_path_mass": 0.006050242374651134,
+      "L_train": 512,
+      "L_test": 1024
+    },
+    "reqmr": {
+      "train_accuracy": 0.002,
+      "train_path_mass": 0.9994141781330108,
+      "L_train": 512,
+      "L_test": 1024
+    }
+  }
+}
